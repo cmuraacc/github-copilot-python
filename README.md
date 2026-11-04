@@ -83,3 +83,58 @@ Use GitHub Copilot to refactor the code for this game to add more advanced featu
 - The game should be responsive and work well on both desktop and mobile devices.
 - UI colors should be visually appealing and accessible.
 - Completed and correct puzzles should display a congratulatory message with the time taken and hints used and ask for the user's name for Top 10 times.
+
+
+### Directory structure
+
++---agent
+|       game-developer.agent.md
+|
++---Screenshots
+|   +---interface
+|   |       interface_check_solution.png
+|   |       interface_completion_message.png
+|   |       interface_completion_message_anotherplayer.png
+|   |       interface_completion_message_no_hints.png
+|   |       interface_dark_mode.png
+|   |       interface_desktop_view.png
+|   |       interface_hint_used.png
+|   |       interface_landscape_view.png
+|   |       interface_portrait_view.png
+|   |       interface_ranking.png
+|   |       interface_wrong_number_entered.png
+|   |
+|   +---prompts
+|   |       01_prompt_difficulty_selector.png
+|   |       02_prompt_wrong_input_feedback.png
+|   |       03_prompt_hint_button.png
+|   |       04_prompt_completion_number_strip.png
+|   |       05_prompt_timer_ranking_and_completion_message.png
+|   |       06_prompt_alternating_colors_grid.png
+|   |       07_prompt_creating_dark_mode.png
+|   |       08_prompt_generating_solvable_board.png
+|   |       09_prompt_settings_button.png
+|   |       10_prompt_testing_framework.png
+|   |
+|   \---unittest
+|           01_unittest_initial_code.png
+|           02_unittest_final_code.png
+|
++---starter
+|   |   app.py
+|   |   requirements.txt
+|   |   sudoku_logic.py
+|   |
+|   +---static
+|   |      main.js
+|   |      styles.css
+|   |
+|   +---templates
+|   |      index.html
+|   |
+|   \---tests
+|          test_sudoku_features.py
+|
+|   CODEOWNERS
+|   LICENSE.txt
+\   README.md
