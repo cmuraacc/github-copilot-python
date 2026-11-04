@@ -84,8 +84,12 @@ Use GitHub Copilot to refactor the code for this game to add more advanced featu
 - UI colors should be visually appealing and accessible.
 - Completed and correct puzzles should display a congratulatory message with the time taken and hints used and ask for the user's name for Top 10 times.
 
+## Copilot considerations
 
-### Directory structure
+Copilot is a great tool to speed up development, add validation and building testing framework. It automatically adapts and improve the code with just a writen instruction.
+However, as observed in the helpful hints, it still struggle for styling and responsiveness. I requested some visual changes, rejected and coded it myself.
+
+## Directory structure
 ```
 +---agent
 |       game-developer.agent.md
@@ -115,6 +119,8 @@ Use GitHub Copilot to refactor the code for this game to add more advanced featu
 |   |       08_prompt_generating_solvable_board.png
 |   |       09_prompt_settings_button.png
 |   |       10_prompt_testing_framework.png
+|   |       11_prompt_rejected_layout1.png
+|   |       12_prompt_rejected_layout2.png
 |   |
 |   \---unittest
 |           01_unittest_initial_code.png
