@@ -1,18 +1,95 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">  
   <title>Sudoku Game</title>
   <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-  <h1>Sudoku Game</h1>
-  <div id="sudoku-board"></div>
-  <div class="controls">
-    <button id="new-game">New Game</button>
-    <button id="check-solution">Check Solution</button>
-    <span id="message"></span>
+  <div class="game-layout">
+    <div class="game-header">
+      <div id="title">Sudoku Game</div>
+      <div id="active-player-name">Player</div>
+      <div id="active-difficulty">Medium</div>
+      <div id="timer" aria-label="Elapsed time">00:00</div>
+    </div>
+    <div class="board-box" aria-label="Sudoku game board">
+      <div id="sudoku-board"></div>
+    </div>
+    <div id="number-highlights" role="group" aria-label="Highlight a number">
+      <button class="number-choice" type="button" data-number="1" aria-pressed="false">1</button>
+      <button class="number-choice" type="button" data-number="2" aria-pressed="false">2</button>
+      <button class="number-choice" type="button" data-number="3" aria-pressed="false">3</button>
+      <button class="number-choice" type="button" data-number="4" aria-pressed="false">4</button>
+      <button class="number-choice" type="button" data-number="5" aria-pressed="false">5</button>
+      <button class="number-choice" type="button" data-number="6" aria-pressed="false">6</button>
+      <button class="number-choice" type="button" data-number="7" aria-pressed="false">7</button>
+      <button class="number-choice" type="button" data-number="8" aria-pressed="false">8</button>
+      <button class="number-choice" type="button" data-number="9" aria-pressed="false">9</button>
+    </div>
+    <div class="message-area" aria-live="polite">
+      <div id="message"></div>
+    </div>
+    <div class="controls" aria-label="Game actions">
+      <button id="new-game" type="button">New Game</button>
+      <button id="hint-action" type="button">Hint</button>
+      <button id="check-solution" type="button">Check</button>
+      <button id="open-settings" type="button">Settings</button>
+    </div>
   </div>
+  <dialog id="settings-dialog" aria-labelledby="settings-title">
+    <div id="settings-view">
+      <div class="settings-heading">
+        <h2 id="settings-title">Settings</h2>
+        <button id="open-ranking" class="ranking-button" type="button">Ranking</button>
+        <button id="close-settings" type="button">Close</button>
+      </div>
+      <div class="settings-grid">
+        <label for="player-name">Name</label>
+        <input id="player-name" type="text" maxlength="30" autocomplete="name" placeholder="Enter your name">
+
+        <label for="difficulty">Difficulty</label>
+        <select id="difficulty" name="difficulty">
+          <option value="45">Easy</option>
+          <option value="35" selected>Medium</option>
+          <option value="25">Hard</option>
+        </select>
+        <span>Hint mode</span>
+        <button id="hint-mode" type="button" aria-pressed="false" title="Switch to light hints">Hint mode: Hard</button>
+
+        <span>Highlights</span>
+        <button id="toggle-highlights" type="button" aria-pressed="true" title="Turn highlights off">Highlights: On</button>
+
+        <span>Theme</span>
+        <button id="theme-toggle" type="button" aria-pressed="false" title="Switch to dark mode">Dark mode: Off</button>
+      </div>
+    </div>
+    <section id="leaderboard-view" aria-labelledby="ranking-title" hidden>
+      <div class="ranking-heading">
+        <h2 id="ranking-title">Ranking</h2>
+        <button id="clear-ranking" type="button" disabled>Clear ranking</button>
+        <button id="back-to-settings" type="button">Back</button>
+        <button id="close-ranking" type="button">Close</button>
+      </div>
+      <h3 id="leaderboard-title">Top 10: Medium</h3>
+      <p id="leaderboard-empty">No finishes yet.</p>
+      <div id="leaderboard-scroll">
+        <table id="leaderboard-table" hidden>
+          <thead>
+            <tr>
+              <th scope="col">Rank</th>
+              <th scope="col">Name</th>
+              <th scope="col">Elapsed time</th>
+              <th scope="col">Adjusted time</th>
+              <th scope="col">Difficulty</th>
+              <th scope="col">Hints used</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboard-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </dialog>
   <script src="/static/main.js"></script>
 </body>
 </html>

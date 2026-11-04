@@ -42,6 +42,31 @@ python app.py
 
 7. Open http://127.0.0.1:5000 in your browser.
 
+## Implemented Features
+
+- Easy, medium, and hard puzzles are generated to remain solvable using naked and hidden single deductions.
+- Hard and light hints identify the target cell and supporting cells; hard hints fill and lock the answer.
+- Entered mistakes are checked and highlighted, and correctly completed rows, columns, boxes, and digits receive temporary feedback.
+- Light and dark themes follow the system preference by default and can be changed in Settings.
+- The responsive game has separate desktop, mobile portrait, and mobile landscape layouts.
+- Per-difficulty Top 10 rankings are stored in browser local storage. Scores show elapsed and adjusted time, with a 30-second penalty per hint.
+
+## Running Tests
+
+From the `starter` directory, run the `unittest` feature suite. In PowerShell with the project virtual environment:
+
+```powershell
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+```
+
+If the virtual environment is activated, use:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+The verbose report lists each feature test as passed or failed. The suite covers Sudoku rules, difficulty clue counts, generated-solution validity and uniqueness, hint/check APIs, completion behavior, local ranking persistence, and client-side UI contracts. Visual layout and browser interactions are checked through source contracts, not automated browser rendering.
+
 ## Project Instructions
 
 Use GitHub Copilot to refactor the code for this game to add more advanced features. The goal is to create a more modern and maintainable codebase and add additional functionality to the final product. You can use any combination of code completion and chat features, like Ask, Edit, or Agent modes.
