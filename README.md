@@ -86,7 +86,7 @@ Use GitHub Copilot to refactor the code for this game to add more advanced featu
 
 
 ### Directory structure
-
+```
 +---agent
 |       game-developer.agent.md
 |
@@ -138,3 +138,4 @@ Use GitHub Copilot to refactor the code for this game to add more advanced featu
 |   CODEOWNERS
 |   LICENSE.txt
 \   README.md
+```
