@@ -87,7 +87,7 @@ Use GitHub Copilot to refactor the code for this game to add more advanced featu
 ## Copilot considerations
 
 Copilot is a great tool to speed up development, add validation and building testing framework. It automatically adapts and improve the code with just a writen instruction.
-However, as observed in the helpful hints, it still struggle for styling and responsiveness. I requested some visual changes, rejected and coded it myself.
+However, as observed in the helpful hints, it still struggle for styling and responsiveness. Some visual change requests resulted in substandard results, and manual coding were necessary
 
 ## Directory structure
 ```
