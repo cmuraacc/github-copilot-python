@@ -143,6 +143,9 @@ h1 {
     border: 4px solid var(--strong-border-color);
     background: var(--surface-background);
     box-shadow: 0 2px 8px var(--board-shadow);
+    width: var(--board-size);
+    height: var(--board-size);
+    aspect-ratio: 1;
 }
 
 #number-highlights {
@@ -280,6 +283,15 @@ h1 {
     border-bottom: 3px solid var(--strong-border-color);
 }
 
+.board-box {
+    grid-area: board;
+    display: grid;
+    width: var(--board-size);
+    height: var(--board-size);
+    place-items: center;
+    align-items: start;
+}
+
 
 button {
     background: var(--button-background);
@@ -401,17 +413,23 @@ label[for="difficulty"] {
 .game-header {
     grid-area: header;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: 50% 30% 20%;
+    grid-template-rows: 50% 50%;
     grid-template-areas:
-        "title title"
-        "player-name timer";
+        "title title title"
+        "player-name difficulty timer";
+    width: 100%;
+    aspect-ratio : 4 / 1;
+    box-sizing: border-box;
+    container-type: inline-size;
 }
+
 #title {
     grid-area: title;
     display: grid;
     place-items: center;
     line-height: 1;
+    font-size: 14cqw;
 }
 
 #active-player-name {
@@ -421,13 +439,14 @@ label[for="difficulty"] {
     vertical-align: middle;
     color: var(--text-color);
     font: inherit;
+    font-size: 6cqw;
 }
 
 #active-difficulty {
     grid-area: difficulty;
     justify-self: center;
     align-self: center;
-    font-size: clamp(16px, 3.8vh, 24px);
+    font-size: 4cqw;
 }
 
 
@@ -438,6 +457,8 @@ label[for="difficulty"] {
     color: var(--text-color);
     font-variant-numeric: tabular-nums;
     font-weight: bold;
+    font-size: 4cqw;
+    align-self: end;
 }
 
 #message {
@@ -538,59 +559,8 @@ label[for="difficulty"] {
             "actions";
         align-items: start;
         gap: 16px 24px;
-        width: min(920px, calc(100% - 32px));
+        width: var(--board-size);
         margin: 20px auto;
-    }
-
-    .game-header {
-        grid-area: header;
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
-        grid-template-areas:
-            "title title title"
-            "player-name difficulty timer";
-        width: var(--board-size);
-        max-width: 100%;
-        height: clamp(120px, 18vh, 176px);
-        margin: 0 auto;
-    }
-
-    #title {
-        grid-area: title;
-        place-items: center;
-        font-size: clamp(34px, 4.5vw, 56px);
-        line-height: 1;
-    }
-
-    #active-player-name {
-        grid-area: player-name;
-        max-width: 100%;
-        font-size: clamp(20px, 2.4vw, 30px);
-        text-align: left;
-    }
-
-    #active-difficulty {
-        font-size: clamp(20px, 2.4vw, 30px);
-    }
-
-    #timer {
-        grid-area: timer;
-        font-size: clamp(20px, 2.4vw, 30px);
-    }
-
-    .board-box {
-        grid-area: board;
-        display: grid;
-        width: 100%;
-        place-items: center;
-    }
-    #sudoku-board {
-        width: var(--board-size);
-        height: var(--board-size);
-        max-width: 100%;
-        aspect-ratio: 1;
-        margin: 0 auto 8px;
     }
 
     #number-highlights {
@@ -632,7 +602,7 @@ label[for="difficulty"] {
             "numbers"
             "message"
             "actions";
-        gap: 4px;
+        gap: 4px 4px;
         width: 100%;
         height: 90%;
         box-sizing: border-box;
@@ -640,57 +610,6 @@ label[for="difficulty"] {
         margin: 0;
     }
 
-    .board-box {
-        grid-area: board;
-        container-type: size;
-        display: grid;
-        width: 100%;
-        height: 100dvw;
-        min-height: 0;
-        place-items: center;
-    }
-
-    .game-header {
-        grid-area: header;
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
-        grid-template-areas:
-            "title title title"
-            "player-name difficulty timer";
-        width: 100%;
-        min-height: 96px;
-        height: clamp(96px, 14dvh, 124px);
-        box-sizing: border-box;
-        padding: 6px 12px;
-    }
-
-    #title {
-        font-size: clamp(30px, 8vw, 44px);
-        line-height: 1;
-    }
-
-    #active-player-name {
-        max-width: 100%;
-        font-size: clamp(18px, 5vw, 24px);
-    }
-
-    #active-difficulty {
-        font-size: clamp(18px, 5vw, 24px);
-    }
-
-    #timer {
-        min-width: 62px;
-        font-size: clamp(18px, 5vw, 24px);
-    }
-
-    #sudoku-board {
-        width: min(100cqw, 100cqh);
-        height: min(100cqw, 100cqh);
-        max-width: none;
-        aspect-ratio: 1;
-        margin: 0;
-    }
 
     #number-highlights {
         grid-area: numbers;
@@ -753,7 +672,7 @@ label[for="difficulty"] {
 
     .game-layout {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) var(--board-size);
+        grid-template-columns: auto var(--board-size);
         grid-template-rows: auto auto auto auto;
         grid-template-areas:
             "header board"
@@ -761,74 +680,21 @@ label[for="difficulty"] {
             "actions board"
             "message board";
         align-items: center;
-        gap: 4px 8px;
+        gap: 4px 4px;
         width: 100vw;
         height: 100dvh;
         box-sizing: border-box;
         margin: 0;
         padding: 0;
     }
-
-    .game-header {
-        grid-area: header;
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
-        grid-template-areas:
-            "title title title"
-            "player-name difficulty timer";
-        width: 100%;
-        height: 100%;
-        min-height: 0;
-        box-sizing: border-box;
-        padding: 4px 8px;
-    }
-
-    #title {
-        min-width: 0;
-        font-size: clamp(22px, 5vh, 40px);
-        line-height: 1;
-    }
-
-    #active-player-name {
-        max-width: 100%;
-        font-size: clamp(16px, 3.8vh, 24px);
-    }
-
-    #active-difficulty {
-        font-size: clamp(16px, 3.8vh, 24px);
-    }
-
-    #timer {
-        min-width: 52px;
-        font-size: clamp(16px, 3.8vh, 24px);
-    }
-
-    .board-box {
-        grid-area: board;
-        display: grid;
-        width: var(--board-size);
-        height: var(--board-size);
-        min-width: 0;
-        min-height: 0;
-        place-items: center;
-        align-items: start;
-    }
-
-    #sudoku-board {
-        width: var(--board-size);
-        height: var(--board-size);
-        max-width: none;
-        aspect-ratio: 1;
-        margin: 0;
-    }
+    
     #number-highlights {
         grid-area: numbers;
         grid-template-columns: repeat(9, minmax(0, 1fr));
         grid-template-rows: min-content;
         align-content: start;
         align-items: start;
-        width: var(--board-size);
+        width: 100%;
         height: auto;
         max-width: 100%;
         margin: 0 auto;
@@ -852,7 +718,7 @@ label[for="difficulty"] {
         grid-area: actions;
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
-        width: var(--board-size);
+        width: 100%;
         max-width: 100%;
         margin: 0 auto;
     }
